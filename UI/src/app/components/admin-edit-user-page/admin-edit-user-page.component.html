@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container px-5">
+        <a class="navbar-brand" href="/admin">Admin home page</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+    </div>
+</nav>
+<div style="margin-top: 80px; text-align: center;" class="container col-md-2">
+    <h1>Our users</h1>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 mt-5">
+            <div class="form-group d-flex align-items-center">
+                <input style="margin-left: 10px" type="text" [(ngModel)]="filterName" class="form-control" id="find"
+                       name="email"
+                       placeholder="search">
+                <select style="margin-left: 10px" [(ngModel)]="criteria" id="criteria" name="criteria"
+                        class="form-select">
+                    <option value="id">Find user by id</option>
+                    <option value="name">Find user by name</option>
+                    <option value="username">Find user by username</option>
+                    <option value="role">Find all users by role</option>
+                    <option value="all">Find all users</option>
+                </select>
+                <button style="margin-left: 10px" type="button" class="btn btn-dark" (click)="onSearch()">Search
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="position:absolute; top:300px; right:245px;" class="container col-md-2">
+    <button type="button" class="btn btn-dark" (click)="openSaveDialog()">Add new user</button>
+</div>
+<div style="background-color: #29AB87;margin-top: 70px" class="container col-md-19">
+    <table mat-table [dataSource]="usersList" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let user">{{user.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let user">{{user.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Username">
+            <th mat-header-cell *matHeaderCellDef>Username</th>
+            <td mat-cell *matCellDef="let user">{{user.username}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Password">
+            <th mat-header-cell *matHeaderCellDef>Password</th>
+            <td mat-cell *matCellDef="let user">{{user.password.substring(0, 20)}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Role">
+            <th mat-header-cell *matHeaderCellDef>Role</th>
+            <td mat-cell *matCellDef="let user">{{user.role}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let user">
+                <mat-icon
+                        (click)="openUpdateDialog(user)"
+                        aria-hidden="false"
+                        aria-label="Example home icon"
+                        fontIcon="edit"
+                >
+                </mat-icon
+                >
+                <mat-icon
+                        (click)="openDeleteDialog(user.id)"
+                        aria-hidden="false"
+                        aria-label="Example delete icon"
+                        fontIcon="delete"
+                >
+                </mat-icon>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </table>
+</div>
+</body>
+</html>

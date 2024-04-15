@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<body id="page-top">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <div class="container px-5">
+    <a class="navbar-brand" href={{url}}>Home page</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+      class="navbar-toggler-icon"></span></button>
+  </div>
+</nav>
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="container px-5">
+      <h1 class="masthead-heading mb-0">This is our chat portal</h1>
+    </div>
+  </div>
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+  <div class="bg-circle-4 bg-circle"></div>
+</header>
+<section id="scroll">
+  <div class="container px-5">
+    <div class="row gx-5 align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/chat.jpg" alt="..."/></div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <h2 class="display-7">Please select the person you want to chat with </h2>
+          <mat-form-field>
+            <mat-label>Select user</mat-label>
+            <mat-select [(ngModel)]="selectedUser" (selectionChange)="openDialog()">
+              <mat-option *ngFor="let user of usersList" [value]="user">
+                {{user.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-4 bg-black">
+  <div class="container px-4"><p class="m-0 text-center text-white small">Copyright &copy; Energy Management System
+    2023</p></div>
+</footer>
+</body>
+</html>
+

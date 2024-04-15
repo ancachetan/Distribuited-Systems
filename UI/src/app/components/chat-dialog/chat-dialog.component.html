@@ -1,0 +1,44 @@
+<div mat-dialog-content class="dialog-content">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.8-fix/jquery.nicescroll.min.js"></script>
+  <div class="container">
+    <div class="content container-fluid bootstrap snippets bootdey">
+      <div class="row row-broken">
+        <div class="col-sm-9 col-xs-12 chat" style="overflow: hidden; outline: none;" tabindex="5001">
+          <div class="col-inside-lg decor-default">
+            <div class="chat-body">
+              <h6>{{this.data.name}}</h6>
+              <div *ngFor="let message of this.messages"
+                   class="answer"
+                   [ngClass]="{'left': message.to === this.data.id ,'right': !(message.to === this.data.id)}">
+                <div class="avatar">
+                  <img
+                    [src]="message.to === data.id ? 'https://bootdey.com/img/Content/avatar/avatar3.png' : 'https://bootdey.com/img/Content/avatar/avatar2.png'"
+                    alt="User name">
+                  <div class="status online"></div>
+                </div>
+                <div class="name"> .</div>
+                <div class="text">
+                  {{ message.content }}
+                </div>
+                <div class="name"
+                     [ngClass]="{'visible': (message.seen == true) &&  message.from === this.data.id, 'hidden': (message.from !== this.data.id) ||  (message.seen == false)}">
+                  seen
+                </div>
+                <div class="time"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="chat-input">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="newMessage" placeholder="Type your message..." (input)="sendTypingNotification()">
+  </mat-form-field>
+  <button mat-button color="primary" (click)="onSend()">Send</button>
+  <button mat-button color="warn" (click)="onClose()">Close</button>
+</div>
+

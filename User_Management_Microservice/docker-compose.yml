@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres_user
+    image: postgres:16-alpine3.18
+    ports:
+      - "5434:5432"
+    environment:
+      - POSTGRES_DB=user_management
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root2022
+    volumes:
+      - user_management:/var/lib/postgresql/data
+  app:
+    container_name: user_management
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_user:5432/user_management
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root2022
+    links:
+      - postgres
+
+volumes:
+  user_management:

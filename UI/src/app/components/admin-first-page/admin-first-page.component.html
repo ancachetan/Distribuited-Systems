@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<body id="page-top">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container px-5">
+        <a class="navbar-brand" href="/home">Smart Energy</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/admin/users">Check for users</a></li>
+                <li class="nav-item"><a class="nav-link" href="/admin/devices">Check for devices</a></li>
+                <li class="nav-item"><a class="nav-link" href="/chat">Chat with a client</a></li>
+              <li class="nav-item"><a (click)="logout()" class="nav-link" href="/home">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header-->
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+        <div class="container px-5">
+            <h1 class="masthead-heading mb-0">Admin Management</h1>
+        </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+<section id="scroll">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/img4.jpg" alt="..."/></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Welcome back to the Admin Portal {{user.name}}! </h2>
+                    <p> As the administrator, you hold the keys to the heart of our system.
+                        This is your control center, where you can oversee and manage every aspect of our
+                        organization's operations regarding users and devices with precision and ease.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="py-5 bg-black">
+    <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Energy Management System
+        2023</p></div>
+</footer>
+</body>
+</html>

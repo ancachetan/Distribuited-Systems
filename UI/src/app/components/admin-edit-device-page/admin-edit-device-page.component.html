@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container px-5">
+        <a class="navbar-brand" href="/admin">Admin home page</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+    </div>
+</nav>
+<div style="margin-top: 80px; text-align: center;" class="container col-md-2">
+    <h1>Our devices</h1>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 mt-5">
+            <div class="form-group d-flex align-items-center">
+                <input style="margin-left: 10px" type="text" [(ngModel)]="filterName" class="form-control" id="find"
+                       name="email"
+                       placeholder="search">
+                <select style="margin-left: 10px" [(ngModel)]="criteria" id="criteria" name="criteria"
+                        class="form-select">
+                    <option value="id">Find device by id</option>
+                    <option value="description">Find all devices by description</option>
+                    <option value="address">Find all devices by address</option>
+                    <option value="holderId">Find all devices by holder id</option>
+                    <option value="maxEnergyConsumption">Find all devices by maximum hourly energy consumption</option>
+                    <option value="all">Find all devices</option>
+                </select>
+                <button style="margin-left: 10px" type="button" class="btn btn-dark" (click)="onSearch()">Search
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="position:absolute; top:300px; right:245px;" class="container col-md-2">
+    <button type="button" class="btn btn-dark" (click)="openSaveDialog()">Add new device</button>
+</div>
+<div style="background-color: #29AB87;margin-top: 70px" class="container col-md-19">
+    <table mat-table [dataSource]="deviceList" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let device">{{device.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let device">{{device.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Address">
+            <th mat-header-cell *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let device">{{device.address}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Maximum hourly energy consumption">
+            <th mat-header-cell *matHeaderCellDef>Maximum hourly energy consumption</th>
+            <td mat-cell *matCellDef="let device">{{device.maxEnergyConsumption}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Holder">
+            <th mat-header-cell *matHeaderCellDef>Holder</th>
+            <td mat-cell *matCellDef="let device">{{device.holderId}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let device">
+                <mat-icon
+                        (click)="openUpdateDialog(device)"
+                        aria-hidden="false"
+                        aria-label="Example home icon"
+                        fontIcon="edit"
+                >
+                </mat-icon
+                >
+                <mat-icon
+                        (click)="openDeleteDialog(device.id)"
+                        aria-hidden="false"
+                        aria-label="Example delete icon"
+                        fontIcon="delete"
+                >
+                </mat-icon>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </table>
+</div>
+</body>
+</html>

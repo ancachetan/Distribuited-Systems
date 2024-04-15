@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>
+    Save new user
+</h1>
+<div mat-dialog-content class="dialog-content">
+    <div class="mb-3">
+        <div class="myDIV">Name</div>
+        <input type="text" [(ngModel)]="user.name" class="form-control" id="name" name="name" placeholder="name">
+    </div>
+    <div class="mb-3">
+        <div class="myDIV">Username</div>
+        <div class="hide">Email must represent this format [email]@[app].[domain]!</div>
+        <input type="email" [(ngModel)]="user.username" class="form-control" id="username" name="username"
+               placeholder="username">
+    </div>
+    <div class="mb-3">
+        <div class="myDIV">Password</div>
+        <div class="hide">Password should contain: at least 7 characters, at least 1 upper case, at least 1 lower case,
+            at least 1 special character!
+        </div>
+        <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password"
+               placeholder="password">
+    </div>
+    <div class="mb-3">
+        <mat-radio-group aria-label="Select an option" (change)="onRoleChange($event)">
+            <mat-radio-button value="ADMIN">ADMIN</mat-radio-button>
+            <mat-radio-button value="CLIENT">CLIENT</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onClickSave()" cdkFocusInitial>Save</button>
+    <button mat-button mat-dialog-close>Close</button>
+</div>

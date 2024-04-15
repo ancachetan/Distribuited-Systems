@@ -1,0 +1,28 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres_device
+    image: postgres:16-alpine3.18
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=device_management
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root2022
+    volumes:
+      - device_management:/var/lib/postgresql/data
+  app:
+    container_name: device_management
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_device:5432/device_management
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root2022
+    links:
+      - postgres
+volumes:
+  device_management:

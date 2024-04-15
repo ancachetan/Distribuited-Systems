@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>
+  Save new device
+</h1>
+<div mat-dialog-content class="dialog-content">
+  <div class="mb-3">
+    <div class="myDIV">Description</div>
+    <div class="hide">Description is mandatory</div>
+    <input type="text" [(ngModel)]="device.description" class="form-control" id="description" name="description"
+           placeholder="description">
+  </div>
+  <div class="mb-3">
+    <div class="myDIV">Address</div>
+    <div class="hide">Address is mandatory</div>
+    <input type="text" [(ngModel)]="device.address" class="form-control" id="address" name="address"
+           placeholder="address">
+  </div>
+  <div class="mb-3">
+    <div class="myDIV">Maximum hourly energy consumption</div>
+    <div class="hide">Positive value is mandatory</div>
+    <input type="text" [(ngModel)]="device.maxEnergyConsumption" class="form-control" id="maxEnergyConsumption"
+           name="maxEnergyConsumption" placeholder="0">
+  </div>
+  <div class="mb-3">
+    <div class="myDIV">Holder</div>
+    <div class="hide">Holder username is mandatory</div>
+    <select (change)="selectedUser()" [(ngModel)]="username" id="username" name="username"
+            placeholder="holder username"
+            class="form-select">
+      <option *ngFor="let name of usersUsernameList" [value]='name'>{{name}}</option>
+    </select>
+  </div>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onClickSave()" cdkFocusInitial>Save</button>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

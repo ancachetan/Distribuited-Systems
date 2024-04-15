@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>
+    Update existing user
+</h1>
+<div mat-dialog-content class="dialog-content">
+    <div class="mb-3">
+        <div class="myDIV">Description</div>
+        <input type="text" [(ngModel)]="device.description" class="form-control" id="description" name="description"
+               placeholder="description">
+    </div>
+    <div class="mb-3">
+        <div class="myDIV">Address</div>
+        <input type="text" [(ngModel)]="device.address" class="form-control" id="address" name="address"
+               placeholder="address">
+    </div>
+    <div class="mb-3">
+        <div class="myDIV">Maximum hourly energy consumption</div>
+        <input type="text" [(ngModel)]="device.maxEnergyConsumption" class="form-control" id="maxEnergyConsumption"
+               name="maxEnergyConsumption" placeholder="0">
+    </div>
+    <div class="mb-3">
+        <div class="myDIV">Holder</div>
+        <select (change)="selectedUser()" [(ngModel)]="username" id="username" name="username"
+                placeholder="holder username"
+                class="form-select">
+            <option *ngFor="let name of usersUsernameList" [value]='name'>{{name}}</option>
+        </select>
+    </div>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onClickUpdate()" cdkFocusInitial>Update</button>
+    <button mat-button mat-dialog-close>Close</button>
+</div>
