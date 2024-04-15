@@ -7,8 +7,8 @@ services:
       - "5434:5432"
     environment:
       - POSTGRES_DB=user_management
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=root2022
+      - POSTGRES_USER=****
+      - POSTGRES_PASSWORD=****
     volumes:
       - user_management:/var/lib/postgresql/data
   app:
@@ -20,8 +20,8 @@ services:
       - "8082:8082"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_user:5432/user_management
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=root2022
+      - SPRING_DATASOURCE_USERNAME=****
+      - SPRING_DATASOURCE_PASSWORD=****
     links:
       - postgres
 

@@ -7,8 +7,8 @@ services:
       - "5435:5432"
     environment:
       - POSTGRES_DB=monitoring_management
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=root2022
+      - POSTGRES_USER=****
+      - POSTGRES_PASSWORD=****
     volumes:
       - monitoring_management:/var/lib/postgresql/data
   app:
@@ -20,8 +20,8 @@ services:
       - "8083:8083"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_monitoring:5432/monitoring_management
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=root2022
+      - SPRING_DATASOURCE_USERNAME=****
+      - SPRING_DATASOURCE_PASSWORD=****
     links:
       - postgres
 volumes:
